@@ -1,0 +1,80 @@
+/* src/styles/register.css */
+
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 28px 24px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft), var(--shadow-strong);
+  backdrop-filter: blur(18px);
+}
+
+.register-card h2 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.register-subtitle {
+  margin: 0 0 18px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.register-status {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #c4b5fd;
+  white-space: pre-line;
+}
+
+.error-text {
+  color: #fca5a5;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.register-footer {
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+/* Key box */
+.key-box {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  background: var(--bg-card-soft);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.key-box-title {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.key-box-value {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 18px;
+  letter-spacing: 3px;
+  margin: 0 0 10px;
+  color: var(--accent);
+}
+
+.key-box-hint {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: var(--text-muted);
+}
