@@ -1,4 +1,3 @@
-// src/pages/LoginPage.tsx
 import React, { useState } from "react";
 import api from "../api/client";
 import TextInput from "../components/TextInput";

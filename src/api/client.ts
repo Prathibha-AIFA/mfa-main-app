@@ -1,7 +1,7 @@
-// src/api/client.ts
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:4000";
+// 🚀 Base URL from environment variable
+const API_BASE_URL = import.meta.env.VITE_API_GATEWAY_URL;
 
 const api = axios.create({
   baseURL: API_BASE_URL,

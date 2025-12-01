@@ -9,6 +9,9 @@ import { generateReadableKey } from "../utils/mfa";
 import "../styles/theme.css";
 import "../styles/dashboard.css";
 
+// 🔹 Auth App URL from env (Vite)
+const AUTH_APP_URL = import.meta.env.VITE_AUTH_APP_URL;
+
 interface Item {
   _id: string;
   title: string;
@@ -151,6 +154,17 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
     } catch {
       setMfaStatus("Unable to copy. Please copy the key manually.");
     }
+  };
+
+  // 🔹 Open Auth App (Render deployment) using env URL
+  const handleOpenAuthApp = () => {
+    if (!AUTH_APP_URL) {
+      setMfaStatus(
+        "Auth App URL is not configured. Please contact your administrator."
+      );
+      return;
+    }
+    window.open(AUTH_APP_URL, "_blank", "noopener,noreferrer");
   };
 
   // -------- OTP MODAL / ACTION WRAPPER --------
@@ -583,8 +597,10 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
               </button>
             </div>
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>
-              Use this 16-digit key in the Auth App. Once registered there,
-              you can login with OTP and perform protected actions.
+              Use this 16-digit key in the{" "}
+              <span style={{ fontWeight: 500 }}>Auth App</span>. Once
+              registered there, you can login with OTP and perform
+              protected actions.
             </p>
             <p
               style={{
@@ -597,7 +613,29 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
             >
               {mfaKey}
             </p>
-            <Button onClick={handleCopyKey}>Copy Key</Button>
+
+            <div
+              style={{
+                display: "flex",
+                gap: 8,
+                marginTop: 8,
+                flexWrap: "wrap",
+              }}
+            >
+              <Button onClick={handleCopyKey}>Copy Key</Button>
+
+              {AUTH_APP_URL && (
+                <button
+                  type="button"
+                  onClick={handleOpenAuthApp}
+                  className="row-button save"
+                  style={{ minWidth: 120 }}
+                >
+                  Open Auth App
+                </button>
+              )}
+            </div>
+
             {mfaStatus && (
               <p
                 style={{
