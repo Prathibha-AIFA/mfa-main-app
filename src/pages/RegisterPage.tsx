@@ -49,13 +49,14 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ onSwitchToLogin }) => {
         password,
       });
 
-      // ✅ Navigate to login immediately after register
+     
       setStatus("User registered successfully. Redirecting to login...");
       onSwitchToLogin();
     } catch (err: any) {
       console.error(err);
       const msg =
         err.response?.data?.message || "Registration failed. Try again.";
+        console.log("Error message:", msg)
       setStatus(msg);
     } finally {
       setLoading(false);
